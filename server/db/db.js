@@ -41,12 +41,12 @@ function deleteTask(id, db = database) {
 
 // Types
 
-function createType(type, db = database) {
-  const newType = {
-    type,
-  }
-  return db('types').insert(newType).select()
-}
+// function createType(type, db = database) {
+//   const newType = {
+//     type,
+//   }
+//   return db('types').insert(newType).select()
+// }
 
 // Users
 
@@ -56,5 +56,4 @@ module.exports = {
   addTask,
   updateTask,
   deleteTask,
-  createType,
 }
