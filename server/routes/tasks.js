@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
 })
 
 // PATCH route for /api/v1/tasks
-router.patch('/', (req, res) => {
+router.patch('/:id', (req, res) => {
   const { id, updatedTask } = req.body
   db.updateTask(id, updatedTask)
     .then((tasks) => {
@@ -44,4 +44,15 @@ router.patch('/', (req, res) => {
     })
 })
 
-// DELETE route for /api/v1/Tasks
+// DELETE route for /api/v1/tasks
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteTask(id)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message })
+    })
+})
